@@ -32,6 +32,17 @@ if (Meteor.isClient) {
     var templateName = Session.get("active-section");
     return Template[templateName];
   };
+
+  Template.question.rendered = function () {
+    var self = this;
+    var handle = Deps.autorun(function () {
+      $(self.find('.question-text')).more({ length: 300 });
+    });
+
+    Template.question.destroyed = function () {
+      handle.stop();
+    };
+  };
 }
 
 if (Meteor.isServer) {
