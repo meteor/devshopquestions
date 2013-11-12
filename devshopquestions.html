@@ -1,0 +1,71 @@
+<head>
+  <title>Devshop Questions at Meteor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="container">
+    {{> header}}
+    {{> active}}
+  </div>
+</body>
+
+<template name="header">
+  <div class="page-header">
+    <h1>Devshop Questions <small>devshopquestions.meteor.com</small></h1>
+  </div>
+
+  <div class="jumbotron">
+    <button type="button" class="btn btn-danger btn-lg">Ask Question</button>
+    <button type="button" class="btn btn-primary btn-lg">Make Announcement</button>
+  </div>
+
+  <div class="alert alert-success">
+    <strong>Skee ball is upstairs!</strong>
+    Tweet your best score on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>
+  </div>
+
+  <ul class="nav nav-tabs">
+    {{#each sections}}
+      <li class="{{active}}"><a href="#"><span class="glyphicon glyphicon-{{icon}}"></span> {{label}}</a></li>
+    {{/each}}
+  </ul>
+</template>
+
+<template name="questions">
+  {{> question}}
+  {{> question}}
+  {{> question}}
+  {{> question}}
+  {{> question}}
+</template>
+
+<template name="announcements">
+Hi there announcements
+</template>
+
+<template name="guide">
+Hi there guide
+</template>
+
+<template name="question">
+  <div class="question">
+    <img src="http://f.cl.ly/items/0z1w0L092q070Q180K3p/36a9325cb67f11e18bb812313804a181_7.jpeg">
+    <h4 class="name">Cole Townsend</h4>
+    <span class="location">Table 10</span>
+    <span class="timestamp">5 minutes ago</span>
+    <div class="question-text">
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo...
+    </div>
+  </div>
+</template>
+
