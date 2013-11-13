@@ -6,6 +6,8 @@
 .more-link {
 	margin-left: 1em;
 	padding: 0.125em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
 }
 
 .more-link img {

@@ -6,18 +6,13 @@
 <body>
   <div class="container">
     {{> header}}
-    {{> active}}
+    {{> questions}}
   </div>
 </body>
 
 <template name="header">
   <div class="page-header">
-    <h1>Devshop Questions <small>devshopquestions.meteor.com</small></h1>
-  </div>
-
-  <div class="jumbotron">
-    <button type="button" class="btn btn-danger btn-lg">Ask Question</button>
-    <button type="button" class="btn btn-primary btn-lg">Make Announcement</button>
+    <h1>Devshop Questions  <small><span class="glyphicon glyphicon-question-sign"></span></small></h1> 
   </div>
 
   <div class="alert alert-success">
@@ -25,46 +20,32 @@
     Tweet your best score on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>
   </div>
 
-  <ul class="nav nav-tabs">
-    {{#each sections}}
-      <li class="{{active}}"><a href="#"><span class="glyphicon glyphicon-{{icon}}"></span> {{label}}</a></li>
-    {{/each}}
-  </ul>
+  <div class="jumbotron">
+    <button type="button" class="btn btn-danger btn-lg">Ask Question</button>
+  </div>
+
 </template>
 
 <template name="questions">
-  {{> question}}
-  {{> question}}
-  {{> question}}
-  {{> question}}
-  {{> question}}
-</template>
-
-<template name="announcements">
-Hi there announcements
-</template>
-
-<template name="guide">
-Hi there guide
+  {{#each questions}}
+    {{> question}}
+  {{/each}}
 </template>
 
 <template name="question">
+<div class="question-wrapper">
+  {{#if flagged}}
+    <div class="ribbon"></div>
+  {{/if}}
   <div class="question">
-    <img src="http://f.cl.ly/items/0z1w0L092q070Q180K3p/36a9325cb67f11e18bb812313804a181_7.jpeg">
-    <h4 class="name">Cole Townsend</h4>
-    <span class="location">Table 10</span>
-    <span class="timestamp">5 minutes ago</span>
-    <div class="question-text">
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
-      Lorem ipsum realtime dolor sit amet reactivity elit, sed do minimongo
+    <img src="{{poster.image}}">
+    <div class="info">
+      <h4 class="name">{{poster.name}}</h4>
+      <span class="location">@{{location}}</span>
+      <span class="timestamp">{{timestamp}}</span>
     </div>
+    <div class="question-text">{{text}}</div>
   </div>
+</div>
 </template>
 
