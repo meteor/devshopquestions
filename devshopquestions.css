@@ -49,6 +49,16 @@
   right: 20px;
   margin: 0;
   padding: 5 5;
+  color: black;
+}
+
+.question .options:hover {
+  color: #438bca;
+}
+
+.question .dropdown-menu {
+  right: 0;
+  left: auto;
 }
 
 .question .text {

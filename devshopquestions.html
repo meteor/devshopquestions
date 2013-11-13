@@ -45,7 +45,16 @@
       <span class="timestamp">{{prettyDate}}</span>
     </div>
     <div class="text">{{text}}</div>
-    <div class="options"> <span class="glyphicon glyphicon-cog"></span> </div>
+
+    <!-- options widget -->
+    <a id="drop-{{_id}}" href="#" class="options" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-cog"></span>
+    </a>
+    <ul id="menu-{{_id}}" class="dropdown-menu" role="menu" aria-labelledby="drop-{{_id}}">
+      <li>One</li>
+      <li>Two</li>
+      <li>Three</li>
+    </ul>
   </div>
 </div>
 </template>
