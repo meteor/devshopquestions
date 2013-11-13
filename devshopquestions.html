@@ -12,7 +12,7 @@
 
 <template name="header">
   <div class="page-header">
-    <h1>Devshop Questions  <small><span class="glyphicon glyphicon-question-sign"></span></small></h1> 
+    <h1>Devshop Questions  <small><span class="glyphicon glyphicon-question-sign"></span></small></h1>
   </div>
 
   <div class="alert alert-success">
@@ -44,18 +44,22 @@
       <span class="location">@{{location}}</span>
       <span class="timestamp">{{prettyDate}}</span>
     </div>
+
     <div class="text">{{text}}</div>
 
-    <!-- options widget -->
-    <a id="drop-{{_id}}" href="#" class="options" data-toggle="dropdown">
-      <span class="glyphicon glyphicon-cog"></span>
-    </a>
-    <ul id="menu-{{_id}}" class="dropdown-menu" role="menu" aria-labelledby="drop-{{_id}}">
-      <li>One</li>
-      <li>Two</li>
-      <li>Three</li>
-    </ul>
+    {{> options_widget}}
   </div>
 </div>
+</template>
+
+<template name="options_widget">
+  <a id="drop-{{_id}}" href="#" class="options" data-toggle="dropdown">
+    <span class="glyphicon glyphicon-cog"></span>
+  </a>
+  <ul id="menu-{{_id}}" class="dropdown-menu" role="menu" aria-labelledby="drop-{{_id}}">
+    <li role="presentation">
+    <a role="menuitem" tabindex="-1" href="http://twitter.com">Menu item</a>
+    </li>
+  </ul>
 </template>
 
