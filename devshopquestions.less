@@ -1,0 +1,109 @@
+.jumbotron {
+  text-align: center;
+  background-color: rgba(0,0,0,0);
+}
+
+.question-wrapper {
+  position: relative;
+}
+
+.question {
+  background-color: #fff;
+  margin: 10px;
+  padding: 5px;
+  min-height: 100px;
+  border-radius: 3px;
+  border: 1px solid #e9e9e9;
+  box-shadow: 0 1px 4px 0px rgba(0,0,0,.05);
+
+  .name {
+    display: inline;
+    margin: 0 auto;
+  }
+
+  .location {
+    margin-left: 0.5em;
+  }
+
+  .timestamp {
+    float: right;
+    margin-right: 0.5em;
+  }
+  img {
+    width: 90px;
+    height: 90px;
+    border-radius: 3px;
+    border-right: 25px;
+    position: relative;
+    display: block;
+    z-index: 100;
+    float: left;
+    margin-right: 10px;
+  }
+  .options {
+    position: absolute;
+    bottom: 5px;
+    right: 20px;
+    margin: 0;
+    padding: 5 5;
+    color: black;
+    &:hover {
+      color: #438bca;
+    }
+  }
+
+  .dropdown-menu {
+    right: 0;
+    left: auto;
+  }
+
+  .text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-left: 10px;
+    margin-right: 25px;
+  }
+
+  .dropdown-menu {
+    min-width: 70px;
+  }
+
+}
+
+
+
+body {
+  padding-bottom: 5em;
+}
+
+.ribbon {
+  background: #a4d3e0;
+  border-left: 1px dashed #aaa;
+  border-right: 1px dashed #aaa;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 5px 0 0 #a4d3e0,
+  -5px 0 0 #a4d3e0;
+  height: 40px;
+  margin: 0 5px;
+  position: relative;
+  float: right;
+  width: 40px;
+  &:after, &:before {
+    border-top: 15px solid #a4d3e0;
+    content: '';
+    height: 0;
+    position: absolute;
+    top: 100%;
+    width: 0;
+  }
+
+  &:after {
+    border-left: 50px solid transparent;
+    right: -6px;
+  }
+  &:before {
+    border-right: 50px solid transparent;
+    left: -6px;
+  }
+
+}
