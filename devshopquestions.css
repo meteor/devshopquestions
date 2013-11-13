@@ -3,6 +3,10 @@
   background-color: rgba(0,0,0,0);
 }
 
+.question-wrapper {
+  position: relative;
+}
+
 .question {
   background-color: #fff;
   margin: 10px;
@@ -39,7 +43,15 @@
   margin-right: 10px;
 }
 
-.question-text {
+.question .options {
+  position: absolute;
+  bottom: 5px;
+  right: 20px;
+  margin: 0;
+  padding: 5 5;
+}
+
+.question .text {
   text-overflow: ellipsis;
   overflow: hidden;
 }

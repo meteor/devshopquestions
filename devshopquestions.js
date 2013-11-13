@@ -23,7 +23,7 @@ if (Meteor.isClient) {
     var self = this;
     self.questionTextHandle = Deps.autorun(function () {
       var text = Questions.findOne(self.data._id).text;
-      $(self.find('.question-text')).text(text).more({ length: 300 });
+      $(self.find('.question .text')).text(text).more({ length: 300 });
     });
   };
   Template.question.destroyed = function () {
