@@ -52,11 +52,6 @@
     }
   }
 
-  .dropdown-menu {
-    right: 0;
-    left: auto;
-  }
-
   .text {
     text-overflow: ellipsis;
     overflow: hidden;
@@ -64,32 +59,45 @@
     margin-right: 25px;
   }
 
-  .dropdown-menu {
-    min-width: 70px;
-  }
-
 }
 
+  .open + .dropdown-menu {
+    display: block;
+  }
 
+  .dropdown-menu {
+    min-width: 70px;
+    right: 0;
+    left: auto;
+  }
+
+
+.answered-question {
+  opacity: 0.5;
+}
 
 body {
   padding-bottom: 5em;
 }
 
-.ribbon {
-  background: #a4d3e0;
-  border-left: 1px dashed #aaa;
-  border-right: 1px dashed #aaa;
+a {
+  cursor: pointer;
+}
+
+.ribbon (@ribbon-color: #A4D3E0, @ribbon-outline: #FFF) {
+  background: @ribbon-color;
+  border-left: 1px dashed @ribbon-outline;
+  border-right: 1px dashed @ribbon-outline;
   border-radius: 5px 5px 0 0;
-  box-shadow: 5px 0 0 #a4d3e0,
-  -5px 0 0 #a4d3e0;
+  box-shadow: 5px 0 0 @ribbon-color,
+              -5px 0 0 @ribbon-color;
   height: 40px;
   margin: 0 5px;
   position: relative;
   float: right;
   width: 40px;
   &:after, &:before {
-    border-top: 15px solid #a4d3e0;
+    border-top: 15px solid @ribbon-color;
     content: '';
     height: 0;
     position: absolute;
@@ -105,5 +113,19 @@ body {
     border-right: 50px solid transparent;
     left: -6px;
   }
-
 }
+
+.active-ribbon {
+  .ribbon;
+  &:hover {
+    .ribbon(#e6e6e6, #fff);
+  }
+}
+
+.empty-ribbon {
+  .ribbon(#e5e5e5, #fff);
+  &:hover {
+    .ribbon(#D2E9F0, #fff);
+  }
+}
+

@@ -7,6 +7,11 @@
   <div class="container">
     {{> header}}
     {{> questions}}
+
+    <hr/>
+
+    <h1>Past Questions</h1>
+    {{> answeredQuesions}}
   </div>
 </body>
 
@@ -23,7 +28,6 @@
   <div class="jumbotron">
     <button type="button" class="btn btn-danger btn-lg">Ask Question</button>
   </div>
-
 </template>
 
 <template name="questions">
@@ -32,12 +36,20 @@
   {{/each}}
 </template>
 
+<template name="answeredQuesions">
+  {{#each questions}}
+    {{> question}}
+  {{/each}}
+</template>
+
 <template name="question">
 <div class="question-wrapper">
   {{#if flagged}}
-    <div class="ribbon"></div>
+    <div class="active-ribbon {{answered}}"></div>
+  {{else}}
+    <div class="empty-ribbon {{answered}}"></div>
   {{/if}}
-  <div class="question">
+  <div class="question {{answered}}">
     <img src="{{poster.image}}">
     <div class="info">
       <h4 class="name">{{poster.name}}</h4>
@@ -45,21 +57,17 @@
       <span class="timestamp">{{prettyDate}}</span>
     </div>
 
-    <div class="text">{{text}}</div>
+    <div class="text"></div>
 
-    {{> options_widget}}
+    <a id="drop-{{_id}}" class="options" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-cog"></span>
+    </a>
   </div>
+  <ul id="menu-{{_id}}" class="dropdown-menu" role="menu" aria-labelledby="drop-{{_id}}">
+    <li role="presentation"><a role="menuitem" tabindex="-1" data-action="toggle-answered">answered</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" data-action="delete">delete</a></li>
+  </ul>
 </div>
 </template>
 
-<template name="options_widget">
-  <a id="drop-{{_id}}" href="#" class="options" data-toggle="dropdown">
-    <span class="glyphicon glyphicon-cog"></span>
-  </a>
-  <ul id="menu-{{_id}}" class="dropdown-menu" role="menu" aria-labelledby="drop-{{_id}}">
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-action="edit">edit</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-action="delete">delete</a></li>
-    <li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-action="delete">call for core dev</a></li>
-  </ul>
-</template>
 

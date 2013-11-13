@@ -2,7 +2,8 @@
 //   text: String,
 //   location: String,
 //   timestamp: EJSON.Date,
-//   flagged: Boolean
+//   flagged: Boolean,
+//   answered: Boolean,
 //   poster: {
 //     name: String,
 //     image: String (link)
@@ -17,26 +18,41 @@ if (Meteor.isClient) {
   };
 
   Template.questions.questions = function () {
-    return Questions.find();
+    return Questions.find({ answered: false });
+  }
+  Template.answeredQuesions.questions = function () {
+    return Questions.find({ answered: true });
   }
   Template.question.rendered = function () {
     var self = this;
     self.questionTextHandle = Deps.autorun(function () {
       var text = Questions.findOne(self.data._id).text;
-      Meteor.defer(function () {
         $(self.find('.question .text')).more('destroy')
                                        .text(text)
                                        .more({ length: 300 });
-      });
     });
   };
   Template.question.destroyed = function () {
     if (this.questionTextHandle)
       this.questionTextHandle.stop();
   };
+  Template.question.answered = function () {
+    if (this.answered)
+      return "answered-question";
+    return "";
+  };
   Template.question.prettyDate = function () {
     return relativeDate(this.timestamp);
   };
+  Template.question.events({
+    'click .active-ribbon, click .empty-ribbon': function (e) {
+      Questions.update(this._id, { $set: { flagged: !this.flagged }});
+    },
+
+    'click [data-action=toggle-answered]': function () {
+      Questions.update(this._id, { $set: { answered: !this.answered }});
+    }
+  });
 
   var timeDependency = new Deps.Dependency;
   var relativeDate = function (then) {
@@ -59,9 +75,9 @@ if (Meteor.isClient) {
       return "Long long time ago";
   };
 
-  Meteor.setInterval(function () {
-    timeDependency.changed();
-  }, 1000);
+//  Meteor.setInterval(function () {
+//    timeDependency.changed();
+//  }, 1000);
 }
 
 if (Meteor.isServer) {
