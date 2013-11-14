@@ -1,0 +1,35 @@
+
+<template name="question">
+<div class="question-wrapper">
+  {{#if flagged}}
+    <div class="active-ribbon {{answered}}"></div>
+  {{else}}
+    <div class="empty-ribbon {{answered}}"></div>
+  {{/if}}
+  <div class="question {{answered}}">
+    <img src="{{poster.image}}">
+    <div class="info">
+      <h4 class="name">{{poster.name}}</h4>
+      <span class="location">@{{location}}</span>
+      <span class="timestamp">{{prettyDate}}</span>
+    </div>
+
+    {{#if editing}}
+      <div class="textarea-wrapper">
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+    {{else}}
+      <div class="text"></div>
+    {{/if}}
+
+    <a id="drop-{{_id}}" class="options" data-toggle="dropdown">
+      <span class="glyphicon glyphicon-cog"></span>
+    </a>
+  </div>
+  <ul id="menu-{{_id}}" class="dropdown-menu" role="menu" aria-labelledby="drop-{{_id}}">
+    <li role="presentation"><a role="menuitem" tabindex="-1" data-action="toggle-answered">answered</a></li>
+    <li role="presentation"><a role="menuitem" tabindex="-1" data-action="delete">delete</a></li>
+  </ul>
+</div>
+</template>
+
