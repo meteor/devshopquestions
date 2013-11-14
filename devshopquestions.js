@@ -33,6 +33,7 @@ if (Meteor.isClient) {
       setTimeout(function () {
         if (editing) {
           $(self.find("textarea")).text(text)
+            .focus()
             .focusout(function () {
               var text = $(self.find("textarea")).val();
               Questions.update(self.data._id, { $set: { text: text } });
