@@ -30,7 +30,7 @@ if (Meteor.isClient) {
     self.questionTextHandle = Deps.autorun(function () {
       var text = Questions.findOne(self.data._id).text;
       var editing = IdIsEditing(self.data._id);
-      Meteor.defer(function () {
+      setTimeout(function () {
         if (editing) {
           $(self.find("textarea")).text(text)
             .focusout(function () {
@@ -44,7 +44,7 @@ if (Meteor.isClient) {
           domNode.text(text)
             .more({ length: 300 });
         }
-      });
+      }, 0);
     });
   };
   Template.question.destroyed = function () {
