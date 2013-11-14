@@ -51,6 +51,9 @@ if (Meteor.isClient) {
 
     'click [data-action=toggle-answered]': function () {
       Questions.update(this._id, { $set: { answered: !this.answered }});
+    },
+    'click [data-action=delete]': function () {
+      Questions.remove(this._id);
     }
   });
 
@@ -75,9 +78,9 @@ if (Meteor.isClient) {
       return "Long long time ago";
   };
 
-//  Meteor.setInterval(function () {
-//    timeDependency.changed();
-//  }, 1000);
+  Meteor.setInterval(function () {
+    timeDependency.changed();
+  }, 1000);
 }
 
 if (Meteor.isServer) {
@@ -88,6 +91,7 @@ if (Meteor.isServer) {
         location: "front door",
         timestamp: (new Date),
         flagged: true,
+        answered: false,
         poster: {
           name: "Realtime monkey",
           image: "http://upload.wikimedia.org/wikipedia/en/f/f9/Monkey-gun.jpg"
@@ -97,6 +101,7 @@ if (Meteor.isServer) {
         location: "roof",
         timestamp: new Date(new Date - 1000*10*60),
         flagged: false,
+        answered: false,
         poster: {
           name: "Hipster Hacker",
           image: "https://pbs.twimg.com/profile_images/1263403750/riverscuomo-mustache.jpg"
