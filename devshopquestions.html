@@ -57,7 +57,13 @@
       <span class="timestamp">{{prettyDate}}</span>
     </div>
 
-    <div class="text"></div>
+    {{#if editing}}
+      <div class="textarea-wrapper">
+        <textarea class="form-control" rows="3"></textarea>
+      </div>
+    {{else}}
+      <div class="text"></div>
+    {{/if}}
 
     <a id="drop-{{_id}}" class="options" data-toggle="dropdown">
       <span class="glyphicon glyphicon-cog"></span>

@@ -55,13 +55,15 @@
     }
   }
 
-  .text {
-    text-overflow: ellipsis;
+  .text, .textarea-wrapper {
     overflow: hidden;
     margin-left: 10px;
     margin-right: 25px;
   }
 
+  textarea {
+    resize: none;
+  }
 }
 
   .open + .dropdown-menu {

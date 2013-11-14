@@ -12,6 +12,8 @@
 Questions = new Meteor.Collection("questions");
 
 if (Meteor.isClient) {
+  Session.setDefault("editing-id", null);
+
   UI.body.active = function () {
     var templateName = Session.get("active-section");
     return Template[templateName];
@@ -27,9 +29,16 @@ if (Meteor.isClient) {
     var self = this;
     self.questionTextHandle = Deps.autorun(function () {
       var text = Questions.findOne(self.data._id).text;
-        $(self.find('.question .text')).more('destroy')
-                                       .text(text)
-                                       .more({ length: 300 });
+      if (IdIsEditing(self.data._id))
+        return;
+      Meteor.defer(function () {
+        console.log('here', self.data._id)
+        var domNode = $(self.find('.question .text'));
+        console.log(domNode)
+        domNode.more('destroy');
+        domNode.text(text)
+        .more({ length: 300 });
+      });
     });
   };
   Template.question.destroyed = function () {
@@ -54,8 +63,15 @@ if (Meteor.isClient) {
     },
     'click [data-action=delete]': function () {
       Questions.remove(this._id);
+    },
+
+    'dblclick .text': function () {
+      Session.set('editing-id', this._id);
     }
   });
+  Template.question.editing = function () {
+    return Session.equals("editing-id", this._id);
+  }
 
   var timeDependency = new Deps.Dependency;
   var relativeDate = function (then) {
@@ -81,6 +97,10 @@ if (Meteor.isClient) {
   Meteor.setInterval(function () {
     timeDependency.changed();
   }, 1000);
+
+  function IdIsEditing (id) {
+    return Session.equals("editing-id", id);
+  }
 }
 
 if (Meteor.isServer) {
