@@ -29,15 +29,21 @@ if (Meteor.isClient) {
     var self = this;
     self.questionTextHandle = Deps.autorun(function () {
       var text = Questions.findOne(self.data._id).text;
-      if (IdIsEditing(self.data._id))
-        return;
+      var editing = IdIsEditing(self.data._id);
       Meteor.defer(function () {
-        console.log('here', self.data._id)
-        var domNode = $(self.find('.question .text'));
-        console.log(domNode)
-        domNode.more('destroy');
-        domNode.text(text)
-        .more({ length: 300 });
+        if (editing) {
+          $(self.find("textarea")).text(text)
+            .focusout(function () {
+              var text = $(self.find("textarea")).val();
+              Questions.update(self.data._id, { $set: { text: text } });
+              Session.set("editing-id", null);
+            });
+        } else {
+          var domNode = $(self.find(".question .text"));
+          domNode.more("destroy");
+          domNode.text(text)
+            .more({ length: 300 });
+        }
       });
     });
   };
