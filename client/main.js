@@ -5,8 +5,12 @@ UI.body.active = function () {
 };
 
 Template.header.events({
-  'click .about': function (e) {
+  'click .link-about': function (e) {
     Session.set('active', 'about');
+    e.preventDefault();
+  },
+  'click .link-home, click .link-logo': function (e) {
+    Session.set('active', 'home');
     e.preventDefault();
   }
 });
