@@ -13,11 +13,13 @@
 
     {{> answeredQuesions}}
   </div>
+  {{> footer}}
 </body>
 
 <template name="header">
   <div class="page-header">
     <div class="container">
+      <img class="logo" src="/meteor_flat.png"/>
       <h1>Devshop Questions  <small><span class="glyphicon glyphicon-question-sign"></span></small></h1>
     </div>
     <div class="login-buttons">
@@ -97,5 +99,9 @@
     <div style="clear: right;"/>
 </fieldset>
 </form>
+</template>
+
+<template name="footer">
+<div class="footer"></div>
 </template>
 
