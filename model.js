@@ -45,8 +45,12 @@ if (Meteor.isServer) {
   Meteor.publish("questions", function () {
     return Questions.find();
   });
+  Meteor.publish("userData", function () {
+    return Meteor.users.find({_id: this.userId});
+  });
 } else {
   Meteor.subscribe("questions");
+  Meteor.subscribe("userData");
 }
 
 Meteor.methods({
