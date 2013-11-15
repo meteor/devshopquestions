@@ -16,7 +16,8 @@ Template.question.rendered = function () {
         });
       } else {
         var domNode = $(self.find(".question .text"));
-        domNode.more("destroy");
+        if (domNode.hasClass("hasMore"))
+          domNode.more("destroy");
         domNode.text(text)
         .more({ length: 300 });
       }
