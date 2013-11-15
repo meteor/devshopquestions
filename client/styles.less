@@ -1,5 +1,9 @@
 @import "/packages/bootstrap3-less/bootstrap.lessimport";
 
+textarea {
+  resize: none;
+}
+
 .login-buttons {
   position: absolute;
   right: 50px;
@@ -30,9 +34,31 @@
   .input-group;
 }
 
-.jumbotron {
+.form {
   text-align: center;
-  background-color: rgba(0,0,0,0);
+  background-color: @jumbotron-bg;
+  padding: @jumbotron-padding;
+  border-radius: @border-radius-large;
+  max-width: 400px;
+  margin: 0 auto;
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.form > form {
+  -moz-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+#ask-button {
+  float: right;
 }
 
 .question-wrapper {
@@ -90,9 +116,6 @@
     margin-right: 25px;
   }
 
-  textarea {
-    resize: none;
-  }
 }
 
   .open + .dropdown-menu {
