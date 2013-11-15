@@ -87,7 +87,9 @@
 <div class="form-group required-control">
   <div class="col-md-12">
     <input id="name" name="name" type="text" placeholder="Your name" class="form-control " required="">
-    <!--p class="help-block">sign in with GitHub</p-->
+    {{#unless logged_in}}
+      <p class="help-block">Please, sign in with <a href="#" id="github-login">GitHub</a></p>
+    {{/unless}}
   </div>
 </div>
 

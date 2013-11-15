@@ -15,16 +15,31 @@ Template.form.events({
     if (!name || !location || !question)
       return true;
 
-    $(templ.find("#name")).val("");
-    $(templ.find("#location")).val("");
-    $(templ.find("#text")).val("");
+    resetForm();
 
     e.preventDefault();
     return false;
+  },
+
+  'click #github-login': function (e) {
+    $('#login-buttons-github').click();
+    e.preventDefault();
   }
 });
 
-Meteor.startup(function () {
-  Session.setDefault("form-shown", false);
-});
+Template.form.logged_in = function () {
+  return !!Meteor.user();
+};
+
+Template.form.rendered = function () {
+  Deps.autorun(function () {
+    resetForm();
+  });
+};
+
+function resetForm () {
+  $("form #name").val(Meteor.user() ? Meteor.user().profile.name : "");
+  $("form #location").val("");
+  $("form #text").val("");
+}
 
