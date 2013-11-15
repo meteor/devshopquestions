@@ -34,6 +34,22 @@ textarea {
   .input-group;
 }
 
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .dirty-row {
+    width: 16.66666666666666%;
+  }
+}
+@media (max-width: 700px) {
+  .dirty-row {
+    width: 20%;
+  }
+}
+
 .form {
   text-align: center;
   background-color: @jumbotron-bg;
@@ -55,6 +71,10 @@ textarea {
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
   overflow: hidden;
+}
+
+#cancel-button {
+  float: right;
 }
 
 #ask-button {

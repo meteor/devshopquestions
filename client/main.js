@@ -1,3 +1,14 @@
+Template.header.add_question = function () {
+  return Session.get('add_question');
+};
+
+Template.header.events({
+  'click #ask-question-form': function (e) {
+    Session.set('add_question', true);
+    e.preventDefault();
+  }
+});
+
 Template.questions.questions = function () {
   return Questions.find({ answered: false });
 };
@@ -7,7 +18,7 @@ Template.answeredQuesions.questions = function () {
 };
 
 Template.form.events({
-  'click button': function (e, templ) {
+  'click #ask-button': function (e, templ) {
     var name = $(templ.find("#name")).val();
     var location = $(templ.find("#location")).val();
     var question = $(templ.find("#text")).val();
@@ -17,8 +28,25 @@ Template.form.events({
 
     resetForm();
 
+    var emailMd5 = Meteor.user() ? md5(Meteor.user().services.github.email) : "";
+    Questions.insert({
+      text: questions,
+      location: location,
+      timestamp: (new Date),
+      flagged: false,
+      answered: false,
+      poster: {
+        name: name,
+        emailMd5: emailMd5
+      }
+    });
     e.preventDefault();
     return false;
+  },
+
+  'click #cancel-button': function (e) {
+    Session.set("add_question", false);
+    e.preventDefault();
   },
 
   'click #github-login': function (e) {
@@ -42,4 +70,5 @@ function resetForm () {
   $("form #location").val("");
   $("form #text").val("");
 }
+
 

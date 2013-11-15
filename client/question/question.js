@@ -35,6 +35,10 @@ Template.question.answered = function () {
   return "";
 };
 
+Template.question.img = function () {
+  return "//www.gravatar.com/avatar/" + this.poster.emailMd5;
+};
+
 Template.question.prettyDate = function () {
   return relativeDate(this.timestamp);
 };
