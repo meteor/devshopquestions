@@ -1,3 +1,16 @@
+Session.setDefault('active', 'home');
+
+UI.body.active = function () {
+  return Template[Session.get('active')];
+};
+
+Template.header.events({
+  'click .about': function (e) {
+    Session.set('active', 'about');
+    e.preventDefault();
+  }
+});
+
 Template.body.add_question = function () {
   return Session.get('add_question');
 };
