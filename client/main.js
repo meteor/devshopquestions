@@ -30,7 +30,7 @@ Template.form.events({
 
     var emailMd5 = Meteor.user() ? md5(Meteor.user().services.github.email) : "";
     Questions.insert({
-      text: questions,
+      text: question,
       location: location,
       timestamp: (new Date),
       flagged: false,
