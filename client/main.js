@@ -61,7 +61,9 @@ Template.form.logged_in = function () {
 
 Template.form.rendered = function () {
   Deps.autorun(function () {
-    resetForm();
+    // retain Meteor.user() which will register the dependency
+    Meteor.user();
+    setTimeout(resetForm, 0);
   });
 };
 
