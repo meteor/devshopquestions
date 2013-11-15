@@ -84,10 +84,22 @@ Template.form.rendered = function () {
   });
 };
 
+Template.header.rendered = function () {
+  Deps.autorun(function () {
+    if (!Meteor.user())
+      setTimeout(putGitHubIcon, 0);
+  });
+};
+
 function resetForm () {
   $("form #name").val(Meteor.user() ? Meteor.user().profile.name : "");
   $("form #location").val("");
   $("form #text").val("");
+}
+
+function putGitHubIcon () {
+  $("#login-buttons-image-github").remove();
+  $("#login-buttons-github").prepend($('<i/>', { class: "fa fa-github" }));
 }
 
 
