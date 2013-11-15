@@ -27,11 +27,11 @@ Template.body.events({
 });
 
 Template.questions.questions = function () {
-  return Questions.find({ answered: false });
+  return Questions.find({ answered: false }, { sort: { timestamp: -1 } });
 };
 
 Template.answeredQuesions.questions = function () {
-  return Questions.find({ answered: true });
+  return Questions.find({ answered: true }, { sort: { timestamp: -1 } });
 };
 
 Template.form.events({
