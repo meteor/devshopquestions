@@ -1,8 +1,8 @@
-Template.header.add_question = function () {
+Template.body.add_question = function () {
   return Session.get('add_question');
 };
 
-Template.header.events({
+Template.body.events({
   'click #ask-question-form': function (e) {
     Session.set('add_question', true);
     e.preventDefault();

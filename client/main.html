@@ -4,8 +4,9 @@
 </head>
 
 <body>
+  {{> header}}
   <div class="container">
-    {{> header}}
+    {{> body}}
     {{> questions}}
 
     <hr/>
@@ -16,12 +17,16 @@
 
 <template name="header">
   <div class="page-header">
-    <h1>Devshop Questions  <small><span class="glyphicon glyphicon-question-sign"></span></small></h1>
+    <div class="container">
+      <h1>Devshop Questions  <small><span class="glyphicon glyphicon-question-sign"></span></small></h1>
+    </div>
     <div class="login-buttons">
       {{> loginButtons}}
     </div>
   </div>
+</template>
 
+<template name="body">
   <div class="alert alert-success">
     <strong>Skee ball is upstairs!</strong>
     Tweet your best score on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>
