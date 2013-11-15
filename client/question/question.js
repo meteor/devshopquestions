@@ -49,18 +49,39 @@ Template.question.editing = function () {
 
 Template.question.events({
   'click .active-ribbon, click .empty-ribbon': function (e) {
-    Questions.update(this._id, { $set: { flagged: !this.flagged }});
+    var self = this;
+    Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
+      if (err || !res)
+        return;
+      Questions.update(self._id, { $set: { flagged: !self.flagged }});
+    });
   },
 
   'click [data-action=toggle-answered]': function () {
-    Questions.update(this._id, { $set: { answered: !this.answered }});
+    var self = this;
+    Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
+      if (err || !res)
+        return;
+      Questions.update(self._id, { $set: { answered: !self.answered }});
+
+    });
   },
   'click [data-action=delete]': function () {
-    Questions.remove(this._id);
+    var self = this;
+    Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
+      if (err || !res)
+        return;
+      Questions.remove(self._id);
+    });
   },
 
   'dblclick .text': function () {
-    Session.set('editing-id', this._id);
+    var self = this;
+    Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
+      if (err || !res)
+        return;
+      Session.set('editing-id', self._id);
+    });
   }
 });
 

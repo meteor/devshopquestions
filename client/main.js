@@ -46,7 +46,7 @@ Template.form.events({
     resetForm();
 
     var emailMd5 = Meteor.user() ? md5(Meteor.user().services.github.email) : "";
-    Questions.insert({
+    var doc = {
       text: question,
       location: location,
       timestamp: (new Date),
@@ -54,9 +54,11 @@ Template.form.events({
       answered: false,
       poster: {
         name: name,
-        emailMd5: emailMd5
+        emailMd5: emailMd5,
+        userId: (Meteor.userId() || "")
       }
-    });
+    };
+    Questions.insert(doc);
     e.preventDefault();
     return false;
   },
