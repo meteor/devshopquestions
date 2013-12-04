@@ -44,6 +44,11 @@ Template.question.prettyDate = function () {
   return relativeDate(this.timestamp);
 };
 
+Template.question.showing_ribbon = function () {
+  var self = this;
+  return Meteor.userId().admin || self.flagged;
+};
+
 Template.question.editing = function () {
   return Session.equals("editing-id", this._id);
 }

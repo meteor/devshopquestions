@@ -1,10 +1,12 @@
 
 <template name="question">
 <div class="question-wrapper">
-  {{#if flagged}}
-    <div class="active-ribbon {{answered}}"></div>
-  {{else}}
-    <div class="empty-ribbon {{answered}}"></div>
+  {{#if showing_ribbon}}
+    {{#if flagged}}
+      <div class="active-ribbon {{answered}}"></div>
+    {{else}}
+      <div class="empty-ribbon {{answered}}"></div>
+    {{/if}}
   {{/if}}
   <div class="question {{answered}}">
     <img src="{{img}}">
