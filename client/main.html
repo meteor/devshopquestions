@@ -18,7 +18,7 @@
 
 <template name="home">
   {{> banner}}
-  {{> askButton}}
+  {{> askForm}}
   {{> questions}}
   <hr/>
   {{> answeredQuesions}}
@@ -36,26 +36,6 @@
   </div>
 </template>
 
-<template name="banner">
-  <div class="alert alert-success">
-    <strong>Skee ball is upstairs!</strong>
-    Tweet your best score on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>
-  </div>
-
-</template>
-
-<template name="askButton">
-  {{#if add_question}}
-    <div class="form">
-      {{> form}}
-    </div>
-  {{else}}
-  <div class="row"> <div class="col-lg-2 col-centered dirty-row">
-      <button id="ask-question-form" class="btn btn-warning btn-lg"><span class="glyphicon glyphicon-plus"/> Ask Question</button>
-    </div> </div>
-  {{/if}}
-</template>
-
 <template name="questions">
   <h1>New Questions</h1>
   {{#each questions}}
@@ -68,59 +48,6 @@
   {{#each questions}}
     {{> question}}
   {{/each}}
-</template>
-
-<template name="form">
-<form class="form-horizontal" style="{{form_style}}">
-<fieldset>
-<!-- Text input-->
-<div class="form-group required-control">
-  <div class="col-md-12">
-    <input id="name" name="name" type="text" placeholder="Your name" class="form-control " required="">
-    {{#unless logged_in}}
-      <p class="help-block">Please, sign in with <a href="#" id="github-login">GitHub</a></p>
-    {{/unless}}
-  </div>
-</div>
-
-<!-- Select Basic -->
-<div class="form-group">
-  <div class="col-md-12">
-    <select id="location" name="location" class="form-control " required="">
-      <option></option>
-      <option>Table 1</option>
-      <option>Table 2</option>
-      <option>Table 3</option>
-      <option>Table 4</option>
-      <option>Table 5</option>
-      <option>Table 6</option>
-      <option>Table 7</option>
-      <option>Table 8</option>
-      <option>Table 9</option>
-      <option>Couch</option>
-      <option>Upstairs couches</option>
-      <option>Upstairs kitchen</option>
-      <option>Front conference room</option>
-      <option>Lobby</option>
-      <option>Roof</option>
-      <option>None of the above</option>
-    </select>
-    <p class="help-block">Where are you?</p>
-  </div>
-</div>
-
-<!-- Textarea -->
-<div class="form-group">
-  <div class="col-md-12">
-    <textarea id="text" name="text" class="form-control" required="">Question goes here...</textarea>
-  </div>
-</div>
-
-    <button id="ask-button" name="ask-button" class="btn btn-warning btn-lg">Ask Question</button>
-    <button id="cancel-button" name="cancel-button" class="btn btn-lg">Cancel</button>
-    <div style="clear: right;"/>
-</fieldset>
-</form>
 </template>
 
 <template name="footer">
