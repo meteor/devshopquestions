@@ -101,7 +101,8 @@ Meteor.methods({
       if (creatorId === "" || !creatorId || creatorId === userId) {
         return true;
       }
-      return (/^.*@meteor.com$/.test(Users.findOne(userId).services.github.email));
+      return Users.findOne(userId).admin ||
+        (/^.*@meteor.com$/.test(Users.findOne(userId).services.github.email));
     } catch (e) {
       return false;
     }
