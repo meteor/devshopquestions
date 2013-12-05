@@ -10,11 +10,11 @@ Template.header.events({
   }
 });
 
-Template.body.add_question = function () {
+Template.askButton.add_question = function () {
   return Session.get('add_question');
 };
 
-Template.body.events({
+Template.askButton.events({
   'click #ask-question-form': function (e) {
     Session.set('add_question', true);
     e.preventDefault();

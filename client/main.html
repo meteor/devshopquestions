@@ -17,7 +17,8 @@
 </body>
 
 <template name="home">
-  {{> body}}
+  {{> banner}}
+  {{> askButton}}
   {{> questions}}
   <hr/>
   {{> answeredQuesions}}
@@ -35,12 +36,15 @@
   </div>
 </template>
 
-<template name="body">
+<template name="banner">
   <div class="alert alert-success">
     <strong>Skee ball is upstairs!</strong>
     Tweet your best score on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>
   </div>
 
+</template>
+
+<template name="askButton">
   {{#if add_question}}
     <div class="form">
       {{> form}}
