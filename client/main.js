@@ -54,6 +54,8 @@ Template.form.events({
       }
     };
     Questions.insert(doc);
+    // close form
+    Session.set("add_question", false);
     e.preventDefault();
     return false;
   },
