@@ -1,4 +1,24 @@
 <template name="adminPanel">
-  
+<div class="row">
+  <p>
+    It may take upto 20s for a new admin to gain superpowers!
+    With great power comes great responsibility.
+  </p>
+  <div class="col-lg-4">
+    <div class="input-group">
+      <input type="text" class="form-control admin-name" placeholder="GitHub username of a new admin">
+      <span class="input-group-btn">
+        <button class="btn btn-default add" type="button">Add!</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<h1>Active admins:</h1>
+<ul>
+  {{#each admins}}
+    <li><a href="https://github.com/{{github}}">{{github}}</a> - <button class="btn btn-xs btn-danger remove">remove</button></li>
+  {{/each}}
+</ul>
 </template>
 

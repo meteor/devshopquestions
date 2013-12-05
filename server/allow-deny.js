@@ -35,6 +35,12 @@ Meteor.startup(function () {
       return isAdmin(userId);
     }
   });
+
+  Admins.allow({
+    'insert': isAdmin,
+    'update': isAdmin,
+    'remove': isAdmin
+  });
 });
 
 function isAdmin(userId) {
