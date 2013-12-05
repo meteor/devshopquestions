@@ -1,6 +1,7 @@
 Meteor.Router.add({
   '/': 'home',
   '/about': 'about',
-  '/displays': 'feed'
+  '/displays': 'feed',
+  '/admin': 'adminPanel'
 });
 
