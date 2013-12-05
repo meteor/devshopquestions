@@ -71,7 +71,7 @@ Template.question.events({
 
   'click [data-action=toggle-answered]': function () {
     var self = this;
-    Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
+    Meteor.call('hasPermissions', Meteor.userId(), self, function (err, res) {
       if (err || !res)
         return;
       Questions.update(self._id, { $set: { answered: !self.answered }});
@@ -80,7 +80,7 @@ Template.question.events({
   },
   'click [data-action=delete]': function () {
     var self = this;
-    Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
+    Meteor.call('hasPermissions', Meteor.userId(), self, function (err, res) {
       if (err || !res)
         return;
       Questions.remove(self._id);
@@ -89,7 +89,7 @@ Template.question.events({
 
   'dblclick .text': function () {
     var self = this;
-    Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
+    Meteor.call('hasPermissions', Meteor.userId(), self, function (err, res) {
       if (err || !res)
         return;
       Session.set('editing-id', self._id);

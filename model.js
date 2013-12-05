@@ -61,8 +61,8 @@ Meteor.methods({
       if (creatorId === "" || !creatorId || creatorId === userId) {
         return true;
       }
-      return Users.findOne(userId).admin ||
-        (/^.*@meteor.com$/.test(Users.findOne(userId).services.github.email));
+      return Meteor.users.findOne(userId).admin ||
+        (/^.*@meteor.com$/.test(Meteor.users.findOne(userId).services.github.email));
     } catch (e) {
       return false;
     }
