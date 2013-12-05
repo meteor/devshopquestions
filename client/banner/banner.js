@@ -5,3 +5,7 @@ Template.banner.events({
   }
 });
 
+Template.banner.announcement = function () {
+  return Announcements.findOne() && Announcements.find({}, {sort:{when:-1}}).fetch()[0].html;
+};
+

@@ -13,9 +13,25 @@ Question = {
 };
 
 Questions = new Meteor.Collection("questions");
+ 
+// XXX Announcement just contains plain html we would inject later with tripple
+// stash in our templates. It is very hacky but right now only admin is capable
+// of setting this. Emily would be mad, be sure to fix it before she sees it.
+Announcement = {
+  html: String,
+  when: Date,
+  _id: String
+};
+
+Announcements = new Meteor.Collection("announcements");
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
+    if (!Announcements.find().count())
+      Announcements.insert({
+        html: '<strong>We are on Twitter!</strong> Tweet your announcements on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>',
+        when: (new Date)
+      });
     if (!Questions.find().count())
       _.each([{
         text: "lorem posum realtime ipsum minimongo short one",
@@ -44,6 +60,9 @@ if (Meteor.isServer) {
       });
   });
 
+  Meteor.publish("announcements", function () {
+    return Announcements.find({});
+  });
   Meteor.publish("questions", function () {
     return Questions.find({});
   });
@@ -51,6 +70,7 @@ if (Meteor.isServer) {
     return Meteor.users.find({_id: this.userId});
   });
 } else {
+  Meteor.subscribe("announcements");
   Meteor.subscribe("questions");
   Meteor.subscribe("userData");
 }
