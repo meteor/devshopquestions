@@ -90,7 +90,9 @@ Template.header.rendered = function () {
 
 function resetForm () {
   $("form #name").val(Meteor.user() ? Meteor.user().profile.name : "");
-  $("form #location").val("");
+  // We don't clear out the previous location for usability
+  // UX FTW!
+  // $("form #location").val("");
   $("form #text").val("");
 }
 
