@@ -1,6 +1,12 @@
 <template name="banner">
   <div class="alert alert-success">
-    {{{announcement}}}
+    {{#if editing}}
+      <textarea id="banner-text" class="form-control" required=""/>
+        <button type="button" class="btn btn-primary banner-save-edits">Save changes</button>
+        <button type="button" class="btn btn-danger banner-cancel-edits">Cancel editing</button>
+    {{else}}
+      {{{announcement}}}
+    {{/if}}
   </div>
 </template>
 
