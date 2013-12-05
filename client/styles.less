@@ -1,16 +1,9 @@
 @import "/packages/bootstrap3-less/bootstrap.lessimport";
 
-.logo {
-  width: 80px;
-  float: left;
-  margin: 10px;
-}
-
-.link-about {
-  color: #7f8c8d;
-  &:hover {
-    color: #1abc9c;
-  }
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
 .page-header {
@@ -22,59 +15,68 @@
   height: 100%;
   background-color: #2c3e50;
   color: #1abc9c;
+  text-shadow: 4px 3px 0 #34495e,9px 8px 0 rgba(0,0,0,0.15);
+  box-shadow: 9px 8px 0 rgba(0,0,0,0.15);
+
   a {
     text-decoration: none;
   }
 
-  text-shadow: 4px 3px 0 #34495e,9px 8px 0 rgba(0,0,0,0.15);
-  box-shadow: 9px 8px 0 rgba(0,0,0,0.15);
-}
-
-textarea {
-  resize: none;
-}
-
-.fa-github {
-  margin-right: 7px;
-  font-size: 1.5em;
-  vertical-align: baseline;
-}
-
-.sign-in-text-github {
-  font-size: 1.3em;
-  vertical-align: baseline;
-}
-
-.login-buttons {
-  position: absolute;
-  right: 50px;
-  top: 0px;
-  max-width: 300px;
-  min-width: 100px;
-  text-shadow: none;
-  box-shadow: 4px 3px 0 #34495e,9px 8px 0 rgba(0,0,0,0.15);
-}
-
-.login-button {
-  .btn;
-  .btn-success;
-  .input-group-btn;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
-  .login-display-name + & {
-    border-bottom-left-radius: 0px;
+  .logo {
+    width: 80px;
+    float: left;
+    margin: 10px;
   }
-}
 
-.login-display-name {
-  .form-control;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
-  border-bottom-right-radius: 0px;
-}
+  .link-about {
+    color: #7f8c8d;
+    &:hover {
+      color: #1abc9c;
+    }
+  }
 
-.login-text-and-button {
-  .input-group;
+  .fa-github {
+    margin-right: 7px;
+    font-size: 1.5em;
+    vertical-align: baseline;
+  }
+
+  .sign-in-text-github {
+    font-size: 1.3em;
+    vertical-align: baseline;
+  }
+
+  .login-buttons {
+    position: absolute;
+    right: 50px;
+    top: 0px;
+    max-width: 300px;
+    min-width: 100px;
+    text-shadow: none;
+    box-shadow: 4px 3px 0 #34495e,9px 8px 0 rgba(0,0,0,0.15);
+  }
+
+  .login-button {
+    .btn;
+    .btn-success;
+    .input-group-btn;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    .login-display-name + & {
+      border-bottom-left-radius: 0px;
+    }
+  }
+
+  .login-display-name {
+    .form-control;
+    border-top-right-radius: 0px;
+    border-top-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+  }
+
+  .login-text-and-button {
+    .input-group;
+  }
 }
 
 .col-centered{
@@ -105,25 +107,30 @@ textarea {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
+
+  textarea {
+    resize: none;
+  }
+
+  & > form {
+    -moz-transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    overflow: hidden;
+  }
+
+  #cancel-button {
+    float: right;
+    color: white;
+  }
+
+  #ask-button {
+    float: right;
+  }
 }
 
-.form > form {
-  -moz-transition: all 0.5s ease;
-  -webkit-transition: all 0.5s ease;
-  -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  overflow: hidden;
-}
-
-#cancel-button {
-  float: right;
-  color: white;
-}
-
-#ask-button {
-  float: right;
-}
 
 .question-wrapper {
   position: relative;
@@ -181,15 +188,15 @@ textarea {
 
 }
 
-  .open + .dropdown-menu {
-    display: block;
-  }
+.open + .dropdown-menu {
+  display: block;
+}
 
-  .dropdown-menu {
-    min-width: 70px;
-    right: 0;
-    left: auto;
-  }
+.dropdown-menu {
+  min-width: 70px;
+  right: 0;
+  left: auto;
+}
 
 
 .answered-question {
@@ -206,7 +213,7 @@ a {
   border-right: 1px dashed @ribbon-outline;
   border-radius: 5px 5px 0 0;
   box-shadow: 5px 0 0 @ribbon-color,
-              -5px 0 0 @ribbon-color;
+  -5px 0 0 @ribbon-color;
   height: 40px;
   margin: 0 5px;
   position: relative;
@@ -256,18 +263,14 @@ a {
   padding-bottom: 200px;
 }
 
-body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-}
-
 #main-container {
   min-height: 100%;
   position: relative;
 }
 
-.feed .alert {
-  font-size: 1.7em;
+.feed {
+  .alert {
+    font-size: 1.7em;
+  }
 }
 
