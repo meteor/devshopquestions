@@ -25,8 +25,22 @@ Announcement = {
 
 Announcements = new Meteor.Collection("announcements");
 
+Admin = {
+  // XXX replace with Meteor account in near future!
+  github: String,
+  _id: String
+};
+
+Admins = new Meteor.Collection("admins");
+
 if (Meteor.isServer) {
   Meteor.startup(function () {
+    // Gods are initialized here
+    if (!Admins.find().count())
+      _.each(["avital", "awoo1126", "debergalis", "dgreensp", "ekatek", "estark37", "glasser", "gschmidt", "jadeqwang", "karayu", "n1mmy", "sixolet", "Slava", "yaliceme"], function (gh) {
+        Admins.insert({ github: gh });
+      });
+
     if (!Announcements.find().count())
       Announcements.insert({
         html: '<strong>We are on Twitter!</strong> Tweet your announcements on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>',
@@ -60,6 +74,10 @@ if (Meteor.isServer) {
       });
   });
 
+  Meteor.publish("admins", function () {
+    if (this.userId && Meteor.users.findOne(this.userId).admin)
+      return Admins.find();
+  });
   Meteor.publish("announcements", function () {
     return Announcements.find({});
   });
@@ -70,6 +88,7 @@ if (Meteor.isServer) {
     return Meteor.users.find({_id: this.userId});
   });
 } else {
+  Meteor.subscribe("admins");
   Meteor.subscribe("announcements");
   Meteor.subscribe("questions");
   Meteor.subscribe("userData");
