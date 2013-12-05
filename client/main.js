@@ -1,16 +1,11 @@
-Session.setDefault('active', 'home');
-
-UI.body.active = function () {
-  return Template[Session.get('active')];
-};
 
 Template.header.events({
   'click .link-about': function (e) {
-    Session.set('active', 'about');
+    Meteor.Router.to('about');
     e.preventDefault();
   },
   'click .link-home, click .link-logo': function (e) {
-    Session.set('active', 'home');
+    Meteor.Router.to('home');
     e.preventDefault();
   }
 });
