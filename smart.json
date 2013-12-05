@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "bootstrap3-less": {},
+    "router": {
+      "git": "https://github.com/Slava/meteor-router.git"
+    }
+  }
+}
