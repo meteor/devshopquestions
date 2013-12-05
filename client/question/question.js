@@ -49,6 +49,10 @@ Template.question.showing_ribbon = function () {
   return self.flagged || (Meteor.user() && Meteor.user().admin);
 };
 
+Template.question.ribbon_clickable = function () {
+  return Meteor.user() && Meteor.user().admin;
+};
+
 Template.question.editing = function () {
   return Session.equals("editing-id", this._id);
 }
@@ -56,6 +60,8 @@ Template.question.editing = function () {
 Template.question.events({
   'click .active-ribbon, click .empty-ribbon': function (e) {
     var self = this;
+    if (!Meteor.user() || !Meteor.user().admin)
+      return;
     Meteor.call('hasPermissions', Meteor.userId(), Questions.findOne(self._id), function (err, res) {
       if (err || !res)
         return;

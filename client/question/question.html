@@ -3,9 +3,9 @@
 <div class="question-wrapper">
   {{#if showing_ribbon}}
     {{#if flagged}}
-      <div class="active-ribbon {{answered}}"></div>
+      <div class="active-ribbon {{answered}}" {{ribbon_clickable}}></div>
     {{else}}
-      <div class="empty-ribbon {{answered}}"></div>
+      <div class="empty-ribbon {{answered}}" clickable></div>
     {{/if}}
   {{/if}}
   <div class="question {{answered}}">
