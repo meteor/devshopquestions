@@ -1,0 +1,18 @@
+<template name="feed">
+  <div class="row">
+    <div class="col-md-6">
+      {{> questions}}
+      <hr>
+      {{> answeredQuesions}}
+    </div>
+    <div class="col-md-6">
+      {{> twitter_feed}}
+    </div>
+  </div>
+</template>
+
+<template name="twitter_feed">
+  <h1>Your latest tweets</h1>
+  <a class="twitter-timeline" href="https://twitter.com/search?q=%23MeteorDevshop" data-widget-id="401347074093903874" height="800">Tweets about "#MeteorDevshop"</a>
+</template>
+

@@ -1,5 +1,6 @@
 Meteor.Router.add({
   '/': 'home',
-  '/about': 'about'
+  '/about': 'about',
+  '/displays': 'feed'
 });
 
