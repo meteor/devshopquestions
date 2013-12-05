@@ -25,6 +25,12 @@ Template.header.rendered = function () {
   });
 };
 
+Template.header.title = function () {
+  if (Meteor.Router.page() === "feed")
+    return "DevshopQuestions.Meteor.com";
+  return "Devshop Questions";
+};
+
 function putGitHubIcon () {
   $("#login-buttons-image-github").remove();
   $("#login-buttons-github").prepend($('<i/>', { class: "fa fa-github" }));
