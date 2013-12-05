@@ -1,6 +1,9 @@
 {
   "packages": {
-    "bootstrap3-less": {},
+    "bootstrap3-less": {
+      "git": "https://github.com/Slava/bootstrap3-less.git",
+      "branch": "flat-ui"
+    },
     "router": {
       "git": "https://github.com/Slava/meteor-router.git"
     }
