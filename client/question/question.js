@@ -46,7 +46,7 @@ Template.question.prettyDate = function () {
 
 Template.question.showing_ribbon = function () {
   var self = this;
-  return Meteor.userId().admin || self.flagged;
+  return Meteor.user().admin || self.flagged;
 };
 
 Template.question.editing = function () {

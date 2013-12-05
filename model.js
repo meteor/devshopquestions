@@ -1,15 +1,17 @@
-// {
-//   text: String,
-//   location: String,
-//   timestamp: EJSON.Date,
-//   flagged: Boolean,
-//   answered: Boolean,
-//   poster: {
-//     name: String,
-//     emailMd5: String (hash),
-//     id: String (ObjectId)
-//   }
-// }
+Question = {
+  text: String,
+  location: String,
+  timestamp: Date,
+  flagged: Boolean,
+  answered: Boolean,
+  poster: {
+    name: String,
+    emailMd5: String,
+    id: String
+  },
+  _id: String
+};
+
 Questions = new Meteor.Collection("questions");
 
 if (Meteor.isServer) {
