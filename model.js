@@ -7,7 +7,7 @@ Question = {
   poster: {
     name: String,
     emailMd5: String,
-    id: String
+    userId: String
   },
   _id: String
 };
@@ -26,7 +26,7 @@ if (Meteor.isServer) {
         poster: {
           name: "Realtime monkey",
           emailMd5: "5cc411461e4b68aa2d0400a7eeccf949",
-          id: ""
+          userId: ""
         }
       }, {
         text: "Echo Park excepteur Wes Anderson Pinterest, fugiat trust fund Cosby sweater McSweeney's 3 wolf moon XOXO organic bitters Portland Brooklyn. Put a bird on it Tonx cred, cardigan mustache keytar scenester. Irure laborum occupy Etsy craft beer. Swag Marfa distillery, nulla leggings disrupt gastropub small batch Thundercats dolore hoodie Brooklyn. Cosby sweater Shoreditch try-hard irony gluten-free. Church-key hella kogi, Truffaut enim next level chia pork belly photo booth fap Tonx. Blue Bottle mlkshk nesciunt mixtape sriracha typewriter, locavore retro meggings dolor Cosby sweater fanny pack.",
@@ -37,7 +37,7 @@ if (Meteor.isServer) {
         poster: {
           name: "Hipster Hacker",
           emailMd5: "5cc411461e4b68aa2d0400a7eeccf949",
-          id: ""
+          userId: ""
         }
       }], function (x) {
         Questions.insert(x);
