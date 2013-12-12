@@ -71,3 +71,9 @@ Deployment
 For some reason jquery.more plugin works incorrectly when all js code is
 minified and concatenated. Right now, I deploy with `--debug` option.
 
+Update: the real story is about CSS minifier. We were hitting some random bug
+with minification of bootstrap theme and jquery plugin. The minifier update
+landed on devel which will fix it. Whenever there is a new
+template-engine-preview release with the merge of 0.6.4 or 0.7 - it will be
+fixed.
+
