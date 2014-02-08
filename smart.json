@@ -5,7 +5,8 @@
       "branch": "flat-ui"
     },
     "router": {
-      "git": "https://github.com/Slava/meteor-router.git"
+      "git": "https://github.com/Slava/meteor-router.git",
+      "branch": "master"
     }
   }
 }
