@@ -6,9 +6,9 @@ Question = {
   answered: Boolean,
   poster: {
     name: String,
-    emailMd5: String,
+    emailMd5: Match.Optional(String),
     userId: String,
-    avatarLink: String
+    avatarLink: Match.Optional(String)
   },
   _id: String
 };
