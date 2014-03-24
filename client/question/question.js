@@ -37,7 +37,8 @@ Template.question.answered = function () {
 };
 
 Template.question.img = function () {
-  return "//www.gravatar.com/avatar/" + this.poster.emailMd5;
+  return this.poster.avatarLink ||
+    "//www.gravatar.com/avatar/" + this.poster.emailMd5;
 };
 
 Template.question.prettyDate = function () {

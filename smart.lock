@@ -1,0 +1,37 @@
+{
+  "meteor": {},
+  "dependencies": {
+    "basePackages": {
+      "bootstrap3-less": {
+        "git": "https://github.com/Slava/bootstrap3-less.git",
+        "branch": "flat-ui"
+      },
+      "router": {
+        "git": "https://github.com/Slava/meteor-router.git",
+        "branch": "master"
+      }
+    },
+    "packages": {
+      "bootstrap3-less": {
+        "git": "https://github.com/Slava/bootstrap3-less.git",
+        "branch": "flat-ui",
+        "commit": "1394606146cb876573aebab8c4234c0260428786"
+      },
+      "router": {
+        "git": "https://github.com/Slava/meteor-router.git",
+        "branch": "master",
+        "commit": "7498ff2ff8e0b87cd4a06d42aa37a6e567ab9b74"
+      },
+      "page-js-ie-support": {
+        "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
+        "tag": "v1.3.5",
+        "commit": "b99ed8380aefd10b2afc8f18d9eed4dd0d8ea9cb"
+      },
+      "HTML5-History-API": {
+        "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
+        "tag": "v4.0.0",
+        "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      }
+    }
+  }
+}

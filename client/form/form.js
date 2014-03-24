@@ -21,6 +21,11 @@ Template.form.events({
     resetForm();
 
     var emailMd5 = Meteor.user() ? md5(Meteor.user().services.github.email) : "";
+
+    var avatarLink = Meteor.user()
+      ? "https://avatars.githubusercontent.com/u/" + Meteor.user().services.github.id + "?"
+      : "http://guyism.com/wp-content/uploads/2012/02/first-day-on-internet.jpg";
+
     var doc = {
       text: question,
       location: location,
@@ -30,7 +35,8 @@ Template.form.events({
       poster: {
         name: name,
         emailMd5: emailMd5,
-        userId: (Meteor.userId() || "")
+        userId: (Meteor.userId() || ""),
+        avatarLink: avatarLink
       }
     };
     Questions.insert(doc);

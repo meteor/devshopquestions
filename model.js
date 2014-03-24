@@ -7,7 +7,8 @@ Question = {
   poster: {
     name: String,
     emailMd5: String,
-    userId: String
+    userId: String,
+    avatarLink: String
   },
   _id: String
 };
