@@ -51,7 +51,7 @@ Template.question.showing_ribbon = function () {
 };
 
 Template.question.ribbon_clickable = function () {
-  return Meteor.user() && Meteor.user().admin;
+  return Meteor.user() && Meteor.user().admin ? 'active-ribbon' : 'empty-ribbon';
 };
 
 Template.question.editing = function () {
