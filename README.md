@@ -54,7 +54,7 @@ Displays view
 
 On http://devshopquestions.meteor.com/displays we have a special view to project
 on the wall. In this view we emphasize the banner notification, questions and
-the Twitter feed on #MeteorDevshop.
+the Twitter feed on #Devshop.
 
 Admins
 ------

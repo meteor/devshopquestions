@@ -7,7 +7,7 @@ Meteor.startup(function () {
 
     if (!Announcements.find().count())
       Announcements.insert({
-        html: '<strong>We are on Twitter!</strong> Tweet your announcements on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#MeteorDevshop</a>',
+        html: '<strong>We are on Twitter!</strong> Tweet your announcements on <a href="https://twitter.com/search?q=%23meteordevshop" class="alert-link">#Devshop</a>',
         when: (new Date)
       });
       if (!Questions.find().count())
